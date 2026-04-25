@@ -47,6 +47,10 @@ int main(int argc, char * argv[])
         {
             cerr << e.what() << '\n';
         }
+        catch (const Parser::InvalidSyntax &e)
+        {
+            cerr << e.what() << '\n';
+        }
     }
 
     return 0;
