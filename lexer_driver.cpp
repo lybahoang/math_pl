@@ -1,24 +1,42 @@
 // Here is a test driver for the Lexer implementation.
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #include "./include/Lexer.h"
 #include "./include/InvalidChar.h"
 using namespace std;
 
-int main() {
-    // input test
-    string source = "let = cos(x) + y; \n print(a - b) ";
+string fileToString(const string& filename)
+{
+    ifstream file(filename);
 
-    try {
-        Lexer lexer(source);
-
-        // lấy toàn bộ token
-        vector<Token> tokens = lexer.tokenize();
-
-        // in ra màn hình
-        lexer.displayTokens(tokens);
+    if (!file.is_open()) {
+        throw runtime_error("Could not open file: " + filename);
     }
-    catch (const InvalidCharacter& e) {
-        cout << "Lexer Error: " << e.what() << endl;
+
+    stringstream buffer;
+    buffer << file.rdbuf();   // Read entire file content
+
+    return buffer.str();
+}
+
+int main(int argc, char *argv[]) {
+    if (argc < 2) {
+        cout << "No source program file" << endl;
+    }
+    else {
+        try {
+            Lexer lexer(fileToString(argv[1]));
+
+            // lấy toàn bộ token
+            vector<Token> tokens = lexer.tokenize();
+
+            // in ra màn hình
+            lexer.displayTokens(tokens);
+        }
+        catch (const InvalidCharacter& e) {
+            cout << "Lexer Error: " << e.what() << endl;
+        }
     }
 
     return 0;
