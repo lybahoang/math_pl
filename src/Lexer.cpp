@@ -37,7 +37,7 @@ Token Lexer::readNumber() {
 
         if (currentChar == '.') {
             if (hasDot) {
-                throw InvalidCharacter("Invalid number format: dấu . đã xuất hiện trước đó rồi");
+                throw InvalidCharacter("Lexical errors:");
             }
             hasDot = true;
         }
