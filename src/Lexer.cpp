@@ -189,7 +189,7 @@ static string tokenTypeToString(TokenType type) {
         case TokenType::STAR: return "STAR";
         case TokenType::SLASH: return "SLASH";
         case TokenType::CARET: return "CARET";
-        case TokenType::EQUAL: return "OPERATOR";
+        case TokenType::EQUAL: return "EQUAL";
         case TokenType::LPAREN: return "LPAREN";
         case TokenType::RPAREN: return "RPAREN";
         case TokenType::SEMICOLON: return "SEMICOLON";
