@@ -6,6 +6,7 @@
 #include "./include/InvalidChar.h"
 using namespace std;
 
+// A function to read the content of a file into a string.g
 string fileToString(const string& filename)
 {
     ifstream file(filename);
