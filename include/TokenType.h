@@ -1,7 +1,7 @@
 #ifndef TOKENTYPE_H
 #define TOKENTYPE_H
 
-enum class TokenType { // chứa các type của token
+enum TokenType { // chứa các type của token
     LET,
     PRINT,
     IDENTIFIER,
