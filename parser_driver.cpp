@@ -22,8 +22,6 @@ string fileToString(const string &filePath)
 
 int main(int argc, char * argv[]) 
 {
-    // std::string filepath = "H:/My Drive/University/TROYCS/8 Spring 2026 (2025.2)/CS 370/project/version1/test_cases/source3.dsl";
-
     if (argc < 2)
     {
         cout << "No source program file" << endl;
