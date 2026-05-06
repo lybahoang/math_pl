@@ -36,7 +36,7 @@ int main(int argc, char *argv[]) {
             lexer.displayTokens(tokens);
         }
         catch (const InvalidCharacter& e) {
-            cout << "Lexer Error: " << e.what() << endl;
+            cout << e.what() << endl;
         }
     }
 
