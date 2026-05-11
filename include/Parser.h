@@ -19,7 +19,7 @@ private:
     }
 
     Token get() {
-        if (pos + 1 >= tokens.size()) return tokens[pos];
+        if (pos > tokens.size()) return Token(EOF_TOKEN, "");
         else return tokens[pos++];
     }
 
