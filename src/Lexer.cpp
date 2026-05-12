@@ -27,6 +27,13 @@ void Lexer::skipWhitespace() {
     }
 }
 
+// Bỏ qua comments
+void Lexer::ignoreComment() {
+    while (currentChar != '\n' && currentChar != '\0') {
+        advance();
+    }
+}
+
 // Đọc số nguyên hoặc số thực
 Token Lexer::readNumber() {
     string result;
@@ -140,6 +147,11 @@ Token Lexer::getNextToken() {
             continue;
         }
 
+        if (currentChar == '#') {
+            ignoreComment();
+            continue;
+        }
+
         if (isalpha(static_cast<unsigned char>(currentChar))) {
             return readIdentifier();
         }
@@ -156,7 +168,7 @@ Token Lexer::getNextToken() {
             return readSymbol();
         }
 
-        throw InvalidCharacter(string("Lexical errors: Invalid character: ") + currentChar);
+        throw InvalidCharacter(string("Lexical errors: Invalid character: ") + currentChar + "d");
     }
 
     return readEndOfFile(); // mếu gặp \0 thì gọi hàm kết thúc file
@@ -202,9 +214,9 @@ static string tokenTypeToString(TokenType type) {
 // In danh sách token
 void Lexer::displayTokens(const vector<Token>& tokens) const {
     for (const Token& token : tokens) { //không copy, dùng trực tiếp phần tử trong vector
-        if (token.type == TokenType::EOF_TOKEN) {
-            continue;
-        }
+        // if (token.type == TokenType::EOF_TOKEN) {
+        //     continue;
+        // }
 
         cout << "[ Type: " << tokenTypeToString(token.type)
              << ", value: " << token.value << " ]" << endl;
