@@ -14,11 +14,13 @@ ASTNodePtr Parser::parseStatement()
     }
     else if (peek().type == PRINT)
     {
+        // Parser a printing statement.
         match(PRINT, "Expected 'print' in a print statement"); // Consume PRINT.
         return parsePrintStatement();
     }
     else if (peek().type == IDENTIFIER)
     {
+        // Parse an assignment statement.
         return parseAssignment();
     }
     else throw InvalidSyntax("Invalid statement in the source code");
@@ -221,17 +223,11 @@ void Parser::displayAST()
     try
     {
         pos = 0;
-        std::vector<ASTNodePtr> nodes = parse();
-        if (nodes.empty() == false)
+        while (peek().type != EOF_TOKEN)
         {
-            for (const auto& node : nodes) {
+            ASTNodePtr node = parseStatement();
             node->print(0);
             std::cout << std::endl;
-            }
-        }
-        else
-        {
-            std::cout << "Empty" << std::endl;
         }
         pos = 0;
     }
