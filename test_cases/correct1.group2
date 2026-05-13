@@ -1,0 +1,22 @@
+let a = 10;
+let b = -5;
+let c = a + b * 2;
+print(c);
+
+a = 18;
+let d = (a + 9) / 3 ^ 2;
+print(d);
+
+print(sin(0));
+print(cos(0));
+print(sqrt(144));
+print(abs(-99));
+print(log(1));
+print(min(10, 20));
+print(max(10, 20));
+
+let f(x) = 2 * x ^ 2 - 3 * x + 1;
+print(f(5));
+
+let g(y) = min(y, 100) + sqrt(y);
+print(g(25));
