@@ -14,16 +14,19 @@ private:
     size_t pos = 0;
 
     Token peek() {
+        // The function returns the curren token without advancing to the next token.
         if (pos >= tokens.size()) return Token(EOF_TOKEN, "");
         return tokens[pos];
     }
 
     Token get() {
+        // The function returns the current token and advances to the next token.
         if (pos > tokens.size()) return Token(EOF_TOKEN, "");
         else return tokens[pos++];
     }
 
     Token match(TokenType expected, const std::string &message) {
+        // The function checks if the token is correct.
         if (expected == peek().type) return get();
         throw InvalidSyntax(message);
     }
@@ -48,7 +51,9 @@ private:
     ASTNodePtr parseFunctionCall();
     std::vector<ASTNodePtr> parseArgList();
 
+
 public:
+    // A class for syntax errors.
     class InvalidSyntax {
     private:
         std::string message;
