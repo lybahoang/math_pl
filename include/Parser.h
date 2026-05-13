@@ -59,7 +59,7 @@ public:
         std::string message;
     public:
         InvalidSyntax(const std::string &m) : message{ m } { }
-        std::string what() const { return "Syntax error: " + message; }
+        std::string what() const { return message; }
     };
 
 public:
