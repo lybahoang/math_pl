@@ -1,4 +1,7 @@
+# Comment 1
+#Commen
 let x = 10;
-let our_var = 2 * 5;
+let our_var = 2 * 5; # Comment
 print(x);
 print(cos(x));
+#Comment
