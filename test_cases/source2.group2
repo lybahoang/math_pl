@@ -1,3 +1,5 @@
 let a = 10;
 a * 4 + 3;
 print(a);
+let f(x) = 2*x;
+f(2);
