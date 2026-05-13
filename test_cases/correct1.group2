@@ -19,4 +19,4 @@ let f(x) = 2 * x ^ 2 - 3 * x + 1;
 print(f(5));
 
 let g(y) = min(y, 100) + sqrt(y);
-print(g(25));
+print(g(25))
