@@ -1,6 +1,3 @@
-# Here is a comment
-# Here is another comment #
-let x = 10;     # Declare a variable named 'x'.
-                # The value of 'x' is 10.
-print(x);       # Print x to the console.
-# ###End of the program.
+let a = 10;
+a * 4 + 3;
+print(a);

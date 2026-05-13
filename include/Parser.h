@@ -35,6 +35,7 @@ private:
     ASTNodePtr parseAssignment();
     ASTNodePtr parsePrintStatement();
     ASTNodePtr parseFunctionDeclaration();
+    ASTNodePtr parseExpressionStatement();
 
     ASTNodePtr parseExpression();
     ASTNodePtr parseAddExpression();

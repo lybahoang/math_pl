@@ -3,7 +3,7 @@
 /* Definition of the parseStatement function */
 ASTNodePtr Parser::parseStatement()
 {
-    // Parse variable declaration statement.
+    // Parse variable declaration statement or function declaration statement.
     if (peek().type == LET)
     {
         match(LET, "Expected 'let' in a declaration"); // Consume LET.
@@ -18,12 +18,13 @@ ASTNodePtr Parser::parseStatement()
         match(PRINT, "Expected 'print' in a print statement"); // Consume PRINT.
         return parsePrintStatement();
     }
-    else if (peek().type == IDENTIFIER)
+    else if (peek().type == IDENTIFIER && pos + 1 < tokens.size() && tokens[pos + 1].type == EQUAL)
     {
         // Parse an assignment statement.
         return parseAssignment();
     }
-    else throw InvalidSyntax("Invalid statement in the source code");
+    else return parseExpressionStatement();
+    //else throw InvalidSyntax("Invalid statement in the source code");
 }
 
 /* Definition of the parseFunctionDeclaration function */
@@ -73,6 +74,14 @@ ASTNodePtr Parser::parseAssignment()
     match(SEMICOLON, "Expected ';' at the end of an assignment");
 
     return std::make_shared<AssignmentNode>(identifier.value, expr);
+}
+
+/* Definition of the parseExpressionStatement function */
+ASTNodePtr Parser::parseExpressionStatement()
+{
+    ASTNodePtr node = parseExpression();
+    match(SEMICOLON, "Expected ';' at the end of an expresison statement");
+    return node;
 }
 
 /* Definition of the parseExpression function */

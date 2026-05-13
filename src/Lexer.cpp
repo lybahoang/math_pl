@@ -27,13 +27,6 @@ void Lexer::skipWhitespace() {
     }
 }
 
-// Bỏ qua comments
-void Lexer::ignoreComment() {
-    while (currentChar != '\n' && currentChar != '\0') {
-        advance();
-    }
-}
-
 // Đọc số nguyên hoặc số thực
 Token Lexer::readNumber() {
     string result;
@@ -144,11 +137,6 @@ Token Lexer::getNextToken() {
 
         if (isspace(static_cast<unsigned char>(currentChar))) {
             skipWhitespace();
-            continue;
-        }
-
-        if (currentChar == '#') {
-            ignoreComment();
             continue;
         }
 
