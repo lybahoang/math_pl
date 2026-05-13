@@ -197,7 +197,8 @@ Checks whether a function name is a supported built-in function.
 */
 bool Interpreter::isBuiltInFunction(const std::string& name) {
     return name == "sin" || name == "cos" || name == "sqrt" || 
-           name == "abs" || name == "log" || name == "min" || name == "max";
+           name == "abs" || name == "ln" || name == "min" || name == "max" ||
+           name == "log" || name == "log2";
 }
 
 
@@ -225,7 +226,15 @@ double Interpreter::callBuiltInFunction(const std::string& name, const std::vect
         if (name == "abs") return std::abs(args[0]);
         if (name == "log") {
             if (args[0] <= 0) throw InterpreterError("Logarithm of non-positive number.");
+            return std::log10(args[0]);
+        }
+        if (name == "ln") {
+            if (args[0] <= 0) throw InterpreterError("Logarithm of non-positive number.");
             return std::log(args[0]);
+        }
+        if (name == "log2") {
+            if (args[0] <= 0) throw InterpreterError("Logarithm of non-positive number.");
+            return std::log2(args[0]);
         }
     }
     return 0.0;
