@@ -27,6 +27,12 @@ void Lexer::skipWhitespace() {
     }
 }
 
+void Lexer::ignoreComment() {
+    while (currentChar != '\n' && currentChar != '\0') {
+        advance();
+    }
+}
+
 // Đọc số nguyên hoặc số thực
 Token Lexer::readNumber() {
     string result;
@@ -37,7 +43,7 @@ Token Lexer::readNumber() {
 
         if (currentChar == '.') {
             if (hasDot) {
-                throw InvalidCharacter("Lexical errors: Invalid number format");
+                throw InvalidCharacter("Invalid number format");
             }
             hasDot = true;
         }
@@ -89,7 +95,7 @@ Token Lexer::readOperator() {
         case '^': return Token(TokenType::CARET, "^");
         case '=': return Token(TokenType::EQUAL, "=");
         default:
-            throw InvalidCharacter(string("Lexical errors: Invalid operator: ") + op);
+            throw InvalidCharacter(string("Invalid operator: ") + op);
     }
 }
 
@@ -109,7 +115,7 @@ Token Lexer::readSymbol() {
         case ';': return Token(TokenType::SEMICOLON, ";");
         case ',': return Token(TokenType::COMMA, ",");
         default:
-            throw InvalidCharacter(string("Lexical errors: Invalid symbol: ") + symbol);
+            throw InvalidCharacter(string("Invalid symbol: ") + symbol);
     }
 }
 
@@ -140,6 +146,11 @@ Token Lexer::getNextToken() {
             continue;
         }
 
+        if (currentChar == '#') {
+            ignoreComment();
+            continue;
+        }
+
         if (isalpha(static_cast<unsigned char>(currentChar))) {
             return readIdentifier();
         }
@@ -156,7 +167,7 @@ Token Lexer::getNextToken() {
             return readSymbol();
         }
 
-        throw InvalidCharacter(string("Lexical errors: Invalid character: ") + currentChar);
+        throw InvalidCharacter(string("Invalid character: ") + currentChar);
     }
 
     return readEndOfFile(); // mếu gặp \0 thì gọi hàm kết thúc file

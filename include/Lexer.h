@@ -31,6 +31,8 @@ private:
     // Bỏ qua khoảng trắng, tab, xuống dòng (không phải token)
     void skipWhitespace();
 
+    void ignoreComment();
+    
     // Đọc một số (integer hoặc float) từ source code
     // Ví dụ: 10, 3.14 → trả về token NUMBER
     Token readNumber();
