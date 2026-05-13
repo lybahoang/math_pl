@@ -1,0 +1,19 @@
+# The source code demonstrates a syntax error of lacking semicolon.
+
+let a = 10;
+print(a);
+
+#let b = 10 * 2
+
+# The source code demonstrates a syntax error of a variable declaration statement.
+
+# let b =;
+#let b  10;
+print(a);
+
+# The source code demonstrates a syntax error of an print statement.
+#print(a;
+
+# The source code demonstrates a syntax error of function declaration statement.
+#let f(x = 2 * x ^ 2;
+let f(x) = 2 * x ^ 2;

@@ -1,0 +1,34 @@
+# The source code illustrates sementic errors including:
+#   duplicate variable and function declaration
+#   assignment before declaration
+#   variable or function usage before declaration
+#   incompatible function variable
+#   divide-by-zero error
+#   negative arguments for log, ln, log2, and sqrt.
+
+# duplicate variable and function declarations
+let a = 10;
+#let a = 20;
+
+#let f(x) = x;
+let f(x) = 2 * x;
+
+# assignment before declaration
+#b = 10;
+
+# variable or function usage before declaration
+#print(c);
+# print(g(2));
+
+# incompatible function variable
+#let func(x) = 2 * y + 3;
+
+# divide-by-zero error
+#print(2 / 0);
+
+# negative arguments for ln, log2, log, and sqrt
+let number = -25;
+#print(ln(number));
+#print(log2(number));
+#print(log(number));
+print(sqrt(number));

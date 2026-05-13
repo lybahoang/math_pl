@@ -1,0 +1,22 @@
+# The source code demonstrates function declarations
+# and function evaluation.
+
+# Define a function named our_func, whose paramter is "x"
+let our_func(x) = 2 * x ^ 2 + 2;
+
+# Evalute our_func at x = 2
+print(our_func(2));     
+
+# Evalute our_func at x = 2.5
+print(our_func(2.5));   
+
+# Define another function named f
+let f(var) = our_func(var) + 2 * var;     # f(var) = 2*var^2 + 2 + 2*var
+print(f(2));
+
+# Define another function named g
+let number = 0;
+let g(y) = f(number);       # g will be a constant function: g(y) = f(0) = 2
+print(g(5));
+print(g(10));
+print(g(10.5));
